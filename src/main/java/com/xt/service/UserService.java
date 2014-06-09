@@ -6,7 +6,7 @@ import com.xt.model.User;
 
 public class UserService {
 
-	private UserDAO userDAO = new UserDAOImpl();
+	private UserDAO userDAO;
 	
 	public void add(User u) {
 		this.userDAO.save(u);
