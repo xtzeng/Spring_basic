@@ -8,8 +8,9 @@
    	<property name="daoId" value="8"></property>
   	<property name="daoStatus" value="good"></property>
   </bean>
-	
-  <bean id="userService" class="com.xt.service.UserService">
+	                                                       <!-- prototype每次new一个新的实例 -->
+  <bean id="userService" class="com.xt.service.UserService" scope="prototype">
+  
   	<!--  <property name="userDAO" ref="u" />-->
   	
   	<!-- 用构造方法注入到属性 userDao-->

@@ -19,6 +19,7 @@ public class UserServiceTest {
 		
 		BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
 		UserService userService = (UserService) factory.getBean("userService");
+		UserService userService2 = (UserService) factory.getBean("userService");
 //		User u = new User();
 //		u.setUsername("zhangsan");
 //		u.setPassword("zhangsan");

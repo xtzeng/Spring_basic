@@ -18,7 +18,9 @@ public class UserService {
 	 * @param userDAO
 	 */
 	public UserService(UserDAO userDAO) {
+		
 		super();
+		System.out.println("hello,this is constructor");
 		this.userDAO = userDAO;
 	}
 
