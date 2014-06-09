@@ -4,7 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">
+  <bean id="userDAO" class="com.xt.dao.impl.UserDAOImpl">
+   	<property name="daoId" value="8"></property>
+  	<property name="daoStatus" value="good"></property>
   </bean>
 	
   <bean id="userService" class="com.xt.service.UserService">
@@ -12,7 +14,7 @@
   	
   	<!-- 用构造方法注入到属性 userDao-->
   		<constructor-arg>
-  	 		<ref bean="u"/>
+  	 		<ref bean="userDAO"/>
   	 	</constructor-arg>
  
   </bean>
