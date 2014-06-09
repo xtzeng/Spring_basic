@@ -12,11 +12,13 @@ public class UserService {
 		this.userDAO.save(u);
 	}
 
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
-
-	public void setUserDAO(UserDAO userDAO) {
+	/**
+	 * 用构造方法注入
+	 * 构造方法没有返回值，但是可以传参
+	 * @param userDAO
+	 */
+	public UserService(UserDAO userDAO) {
+		super();
 		this.userDAO = userDAO;
 	}
 
