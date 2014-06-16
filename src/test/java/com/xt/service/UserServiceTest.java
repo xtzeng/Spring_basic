@@ -20,6 +20,8 @@ public class UserServiceTest {
 		
 		BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
 		UserDAO userDAO = (UserDAO) factory.getBean("userDAO");
+		UserDAO userDAO2 = (UserDAO) factory.getBean("userDAO");
+		System.out.println(userDAO==userDAO2);
 		System.out.println(userDAO);
 	}
 
