@@ -4,7 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">
+<!-- bean可以写id也可以写name 写成name可以用一些特殊符号，没什么用，没事不要去乱加特殊符号 -->
+  <bean name="u" class="com.xt.dao.impl.UserDAOImpl">
   </bean>
 	
   <bean id="userService" class="com.xt.service.UserService">
