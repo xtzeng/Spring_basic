@@ -5,41 +5,22 @@
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
   <bean id="userDAO" class="com.xt.dao.impl.UserDAOImpl">
-  	
-   <property name="sets">
-  		<set>
-  			<value>1</value>
-  			<value>2</value>
-  		</set>
-  	</property>
-  	
-  	<property name="lists">
-  		<list>
-  			<value>1</value>
-  			<value>2</value>
-  			<value>3</value>
-  		</list>
-  	</property>
-  	
-  	<property name="maps">
-  		<map>
-  			<entry key="1" value="1"></entry>
-  			<entry key="2" value="2"></entry>
-  			<entry key="3" value="3"></entry>
-  			<entry key="4" value="4"></entry>
-  		</map>
-  	</property>
-  	
+  	<property name="daoId" value="1"></property>
+  </bean>
+  
+   <bean id="userDAO2" class="com.xt.dao.impl.UserDAOImpl">
+  	<property name="daoId" value="2"></property>
   </bean>
 	                                                       <!-- prototype每次new一个新的实例 -->
-  <bean id="userService" class="com.xt.service.UserService" scope="prototype">
+  <bean id="userService" class="com.xt.service.UserService" scope="prototype" autowire="byName">
   
+  <!-- autowire "byName"的意思是根据属性的名字取相对应的bean,
+  	例如本例中，UserService下有一个private UserDAO UserDAO2;就会去找bean id为userDAO2的bean-->
+  <!--bean 不写scope 默认是singleton-->
   	<!--  <property name="userDAO" ref="u" />-->
   	
   	<!-- 用构造方法注入到属性 userDao-->
-  		<constructor-arg>
-  	 		<ref bean="userDAO"/>
-  	 	</constructor-arg>
+  	
  
   </bean>
   
