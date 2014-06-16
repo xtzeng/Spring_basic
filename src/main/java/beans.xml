@@ -8,21 +8,13 @@
   	<property name="daoId" value="1"></property>
   </bean>
   
-   <bean id="userDAO2" class="com.xt.dao.impl.UserDAOImpl">
-  	<property name="daoId" value="2"></property>
-  </bean>
+
 	                                                       <!-- prototype每次new一个新的实例 -->
-  <bean id="userService" class="com.xt.service.UserService" scope="prototype" autowire="byName" >
+  <bean id="userService" class="com.xt.service.UserService"  init-method="init" destroy-method="destroy" scope="prototype"  >
   
-  <!-- autowire "byName"的意思是根据属性的名字取相对应的bean,
-  	例如本例中，UserService下有一个private UserDAO UserDAO2;就会去找bean id为userDAO2的bean-->
-  <!--bean 不写scope 默认是singleton-->
-  	<!--  <property name="userDAO" ref="u" />
-  	                  可以不写这个，由spring来帮我们autowire 
-  	                  从getter setter注入，但程序中要写get,set方法-->
-  	<!-- 用构造方法注入到属性 userDao-->
-  	
-     <!--不写autowire=""就会出nullpointer异常 属性userDAO2就会为null-->
+	<constructor-arg>
+  	 	<ref bean="userDAO"/>
+  	 </constructor-arg>
      
   </bean>
   
