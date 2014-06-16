@@ -1,43 +1,67 @@
 package com.xt.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import com.xt.dao.UserDAO;
 import com.xt.model.User;
 
 public class UserDAOImpl implements UserDAO{
 
-	private int daoId;
-	private String daoStatus;
+	private Set<String> sets;
+	private List<String> lists;
+	private Map<String , String> maps;
 	
-	@Override
-	public void save(User u) {
-		//Hibernate
-		//JDBC
-		//xml
-		//network
-		System.out.println("daoId=====" + daoId);
-		System.out.println("daoStatus=======" + daoStatus);
-		System.out.println("a user saved!");
+	
+
+	public Set<String> getSets() {
+		return sets;
 	}
 
-	public int getDaoId() {
-		return daoId;
+
+
+	public void setSets(Set<String> sets) {
+		this.sets = sets;
 	}
 
-	public void setDaoId(int daoId) {
-		this.daoId = daoId;
+
+
+	public List<String> getLists() {
+		return lists;
 	}
 
-	public String getDaoStatus() {
-		return daoStatus;
+
+
+	public void setLists(List<String> lists) {
+		this.lists = lists;
 	}
 
-	public void setDaoStatus(String daoStatus) {
-		this.daoStatus = daoStatus;
+
+
+	public Map<String, String> getMaps() {
+		return maps;
 	}
+
+
+
+	public void setMaps(Map<String, String> maps) {
+		this.maps = maps;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return this.daoId+":" + this.daoStatus;
+		return "sets size:" + sets.size() + "| lists size:" + lists.size() + "| maps size:" + maps.size() ; 
+	}
+
+
+
+	@Override
+	public void save(User u) {
+		System.out.println("user saved!");
+		
 	}
 
 	

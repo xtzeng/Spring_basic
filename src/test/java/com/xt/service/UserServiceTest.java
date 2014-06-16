@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.xt.dao.UserDAO;
 import com.xt.model.User;
 
 
@@ -18,12 +19,8 @@ public class UserServiceTest {
 	public void testAdd() throws SecurityException, IllegalArgumentException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
 		
 		BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
-		UserService userService = (UserService) factory.getBean("userService");
-		UserService userService2 = (UserService) factory.getBean("userService");
-//		User u = new User();
-//		u.setUsername("zhangsan");
-//		u.setPassword("zhangsan");
-		userService.add(new User());
+		UserDAO userDAO = (UserDAO) factory.getBean("userDAO");
+		System.out.println(userDAO);
 	}
 
 }
