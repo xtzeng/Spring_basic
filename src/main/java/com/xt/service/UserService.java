@@ -1,27 +1,31 @@
 package com.xt.service;
 
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import com.xt.dao.UserDAO;
-import com.xt.dao.impl.UserDAOImpl;
 import com.xt.model.User;
 
+@Service("userService")
 public class UserService {
 
-	private UserDAO userDAO;
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Resource(name="userDAOImpl")
+	private UserDAO userDAOImpl;
 	
 	public void add(User u) {
-		this.userDAO.save(u);
+		this.userDAOImpl.save(u);
 	}
 
-	/**
-	 * 用构造方法注入
-	 * 构造方法没有返回值，但是可以传参
-	 * @param userDAO
-	 */
-	public UserService(UserDAO userDAO) {
-		super();
-		this.userDAO = userDAO;
+	public void init() {
+		logger.info("init....");
 	}
-
 	
-	
+	public void destroy() {
+		logger.info("destroy....");
+	}
 }

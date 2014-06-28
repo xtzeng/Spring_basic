@@ -1,15 +1,33 @@
 package com.xt.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
-	
-	private String username;
+	private int id;
+	private String name;
 	private String password;
-	public String getUsername() {
-		return username;
+	
+	
+	@Id
+	@GeneratedValue
+	public int getId() {
+		return id;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@Column(name="name")
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getPassword() {
 		return password;
