@@ -22,7 +22,8 @@
   </bean>
   
   <bean id="u2" class="com.xt.dao.impl.UserDAOImpl">
-  </bean>        
+  </bean> 
+         
 <!-- -->	       
   <bean id="userService" class="com.xt.service.UserService" >
   

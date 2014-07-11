@@ -13,6 +13,8 @@ import com.xt.model.User;
 
 public class UserService {
 
+	@Autowired
+	@Qualifier("u")
 	private UserDAO userDAO;
 	
 	public void init() {
@@ -24,18 +26,6 @@ public class UserService {
 	}
 
 	
-	
-
-
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
-
-	@Autowired
-	public void setUserDAO(@Qualifier("u2") UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
-
 	public void destroy() {
 		System.out.println("destroy.........");
 	}
