@@ -17,12 +17,14 @@ public class UserServiceTest {
 	@Test
 	public void testAdd() throws SecurityException, IllegalArgumentException, IOException, InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
 		
-		BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
-		UserService userService = (UserService) factory.getBean("userService");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+		UserService userService = (UserService) ctx.getBean("userService",UserService.class);
 //		User u = new User();
 //		u.setUsername("zhangsan");
 //		u.setPassword("zhangsan");
 		userService.add(new User());
+		ctx.destroy();
+		
 	}
 
 }
