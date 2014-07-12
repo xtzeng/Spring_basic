@@ -16,18 +16,17 @@
    <!--  <context:annotation-config />    -->
    <context:component-scan base-package="com.xt.*" ></context:component-scan> 
    
+   <!--
  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">
  	<property name="daoId" value="8"></property>
   	<property name="daoStatus" value="good"></property>
   </bean>
-  
   <bean id="u2" class="com.xt.dao.impl.UserDAOImpl">
-  </bean> 
+  </bean> -->
          
-<!-- -->	       
+<!--	       
   <bean id="userService" class="com.xt.service.UserService" >
-  
-  </bean>
+  </bean> -->
   
 
 </beans>
