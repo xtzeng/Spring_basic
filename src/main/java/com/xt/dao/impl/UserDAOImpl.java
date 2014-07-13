@@ -19,7 +19,10 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 
-
+	public void delete() {
+		System.out.println("user deteleted");
+		
+	}
 	
 	
 }
