@@ -3,6 +3,7 @@ package com.xt.service;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,6 +22,7 @@ public class UserServiceTest {
 		User u = new User();
 		u.setName("hello");
 		u.setPassword("zhangsan");
+		u.setLastUpdateTime(new Date());
 		userService.add(u);
 		
 	}
