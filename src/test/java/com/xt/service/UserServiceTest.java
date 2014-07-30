@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,10 +19,11 @@ public class UserServiceTest {
 		
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		UserService userService = (UserService) ctx.getBean("userService");
-//		User u = new User();
-//		u.setUsername("zhangsan");
-//		u.setPassword("zhangsan");
-		userService.add(new User());
+		User u = new User();
+		u.setUsername("zhangsan");
+		u.setPassword("zhangsan");
+		u.setCreate_time(new Date());
+		userService.add(u);
 		ctx.destroy();
 		
 	}

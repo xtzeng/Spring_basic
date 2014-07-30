@@ -20,6 +20,7 @@ public class LogDAOImpl implements LogDAO{
 		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(log);
+		throw new RuntimeException("error!");
 	}
 
 }

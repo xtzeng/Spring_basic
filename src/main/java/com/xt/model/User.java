@@ -1,5 +1,8 @@
 package com.xt.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +18,9 @@ public class User {
 	
 	private String username;
 	private String password;
+	
+
+	private Date create_time;
 	
 	public int getId() {
 		return id;
@@ -35,6 +41,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Date getCreate_time() {
+		return create_time;
+	}
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 
 	

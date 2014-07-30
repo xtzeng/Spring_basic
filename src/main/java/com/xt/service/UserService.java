@@ -23,7 +23,8 @@ import com.xt.model.User;
 public class UserService {
 
 	@Autowired
-	@Qualifier("u")
+	@Qualifier("userDAO")
+	//@Resource(name="u")
 	private UserDAO userDAO;
 	
 	@Resource(name="logDAO")

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.xt.dao.UserDAO;
 import com.xt.model.User;
 
-@Repository("u")
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO{
 
 	@Resource(name="sessionFactory")
@@ -26,7 +26,8 @@ public class UserDAOImpl implements UserDAO{
 		
 		s.save(u);
 		
-		System.out.println("a user saved!");
+		//throw new RuntimeException("exeption!");
+		//System.out.println("a user saved!");
 	}
 
 
