@@ -34,7 +34,7 @@ public class UserService {
 		System.out.println("init.........");
 	}
 	
-	@Transactional(readOnly=true)
+	@Transactional
 	public void add(User u) {
 		
 		userDAO.save(u);
