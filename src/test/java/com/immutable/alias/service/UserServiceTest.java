@@ -1,4 +1,4 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 
 import java.io.IOException;
@@ -8,7 +8,8 @@ import java.util.Date;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.xt.model.User;
+import com.immutable.alias.model.User;
+import com.immutable.alias.service.UserService;
 
 
 public class UserServiceTest {
@@ -21,7 +22,7 @@ public class UserServiceTest {
 		System.out.println(userService.getClass());
 		User u = new User();
 		u.setName("hello");
-		u.setPassword("zhangsan");
+		u.setPassword("pwd");
 		u.setLastUpdateTime(new Date());
 		userService.add(u);
 		

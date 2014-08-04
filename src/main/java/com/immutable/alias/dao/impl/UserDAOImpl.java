@@ -1,4 +1,4 @@
-package com.xt.dao.impl;
+package com.immutable.alias.dao.impl;
 
 import javax.annotation.Resource;
 
@@ -8,8 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.xt.dao.UserDAO;
-import com.xt.model.User;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
 
 @Repository("userDAOImpl")
 public class UserDAOImpl implements UserDAO{
