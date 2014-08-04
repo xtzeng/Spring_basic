@@ -1,8 +1,8 @@
 <beans>
-	<bean id="u" class="com.xt.dao.impl.UserDAOImpl" />
+	<bean id="u" class="com.immutable.alias.dao.impl.UserDAOImpl" />
 	
 	<!-- -->
-	<bean id="userService" class="com.xt.service.UserService" >
+	<bean id="userService" class="com.immutable.alias.service.UserService" >
 		<property name="userDAO" bean="u"/>
 	</bean>
 	

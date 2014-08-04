@@ -1,4 +1,4 @@
-package com.xt.spring;
+package com.immutable.alias.spring;
 
 
 import java.io.IOException;

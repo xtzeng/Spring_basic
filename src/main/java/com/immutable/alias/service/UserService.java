@@ -1,8 +1,8 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
-import com.xt.dao.UserDAO;
-import com.xt.dao.impl.UserDAOImpl;
-import com.xt.model.User;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.dao.impl.UserDAOImpl;
+import com.immutable.alias.model.User;
 
 public class UserService {
 

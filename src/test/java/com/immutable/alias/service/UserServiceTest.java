@@ -1,4 +1,4 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 import static org.junit.Assert.*;
 
@@ -8,9 +8,10 @@ import java.lang.reflect.InvocationTargetException;
 import org.jdom2.JDOMException;
 import org.junit.Test;
 
-import com.xt.model.User;
-import com.xt.spring.BeanFactory;
-import com.xt.spring.ClassPathXmlApplicationContext;
+import com.immutable.alias.model.User;
+import com.immutable.alias.service.UserService;
+import com.immutable.alias.spring.BeanFactory;
+import com.immutable.alias.spring.ClassPathXmlApplicationContext;
 
 public class UserServiceTest {
 
