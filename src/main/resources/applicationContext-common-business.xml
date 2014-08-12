@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- - Application context containing business beans. - - Used by all artifacts. 
+	- -->
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- 加载数据库资源文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- 扫描包，应用Spring的注解 -->
+	<context:component-scan base-package="com.spring.security.dao" />
+
+	<!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.JstlView" p:prefix="/WEB-INF/security/"
+		p:suffix=".jsp" p:contentType="text/html;charset=UTF-8" />
+
+	<!-- 定义使用springframework数据源实现 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 指定连接数据库的驱动 -->
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<!-- 指定连接数据库的URl -->
+		<property name="url" value="${jdbc.url}" />
+		<!-- 指定连接数据库的用户名 -->
+		<property name="username" value="${jdbc.username}" />
+		<!-- 指定连接数据库的密码 -->
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- 操作数据库的模板类 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	
+	<!-- 配置userservice类 -->
+	<bean id="myUserDetailService" class="com.spring.security.service.MyUserDetailService">
+	    <property name="userCache" ref="userCache"/>
+	</bean>
+
+	<!-- 用户的密码加密或解密 -->
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- 启用用户的缓存功能 -->
+	<bean id="userCache"
+		class="org.springframework.security.core.userdetails.cache.EhCacheBasedUserCache">
+		<property name="cache" ref="userEhCache" />
+	</bean>
+
+	<bean id="userEhCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheName" value="userCache" />
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" />
+	
+	<!-- 设置权限的前缀为AUTH_，而不是ROLE_。 
+	<bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+    	<property name="rolePrefix" value="ROLE_"/>
+    </bean>
+    -->
+    
+    <!-- 访问决策器，决定某个用户具有的角色，是否有足够的权限去访问某个资源。 -->
+	<bean id="myAccessDecisionManager" 
+		class="com.spring.security.MyAccessDecisionManager"> </bean> 
+
+	<!-- 资源源数据定义，将所有的资源和权限对应关系建立起来，即定义某一资源可以被哪些角色去访问。-->
+	<bean id="mySecurityMetadataSource" 
+		class="com.spring.security.MyInvocationSecurityMetadataSourceService">
+		<constructor-arg name="resourcesDao" ref="resourcesDao"></constructor-arg>
+	</bean>
+</beans>

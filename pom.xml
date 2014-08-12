@@ -26,6 +26,12 @@
 	</dependency>
 	
 	<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-entitymanager</artifactId>
+	<version>3.6.10.Final</version>
+	</dependency>
+	
+	<dependency>
 	<groupId>commons-dbcp</groupId>
 	<artifactId>commons-dbcp</artifactId>
 	<version>1.4</version>
@@ -89,6 +95,7 @@
       <scope>runtime</scope>
    </dependency>
    
+   
     <dependency>
 	<groupId>mysql</groupId>
 	<artifactId>mysql-connector-java</artifactId>
@@ -116,5 +123,31 @@
 	<version>1.0.13</version>
 </dependency>
             
+  <dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+	  <scope>provided</scope>
+	  <version>2.5</version>
+	</dependency>
+
+	<dependency>
+	  <groupId>javax.servlet.jsp</groupId>
+	  <artifactId>jsp-api</artifactId>
+	  <scope>provided</scope>
+	  <version>2.1</version>
+	</dependency>
+	
+	 <!-- ... other dependency elements ... -->
+  <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>3.2.4.RELEASE</version>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>3.2.4.RELEASE</version>
+  </dependency>
+	          
   </dependencies>
 </project>

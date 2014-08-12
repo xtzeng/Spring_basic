@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - Application context containing authentication, channel - security 
+	and web URI beans. - - Only used by "filter" artifact. - -->
+
+<b:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    
+    <!-- 不要过滤图片等静态资源 -->
+    <http pattern="/**/*.jpg" security="none"/>
+    <http pattern="/**/*.png" security="none"/>
+    <http pattern="/**/*.gif" security="none"/>
+    <http pattern="/**/*.css" security="none"/>
+    <http pattern="/**/*.js" security="none"/>
+    
+    <!-- 这个元素用来在你的应用程序中启用基于安全的注解 
+    <global-method-security  pre-post-annotations="enabled" access-decision-manager-ref="myAccessDecisionManager"/>
+    -->
+    
+    
+	<!-- 配置页面访问权限 -->
+	<http auto-config='true' access-denied-page="/accessDenied.jsp">
+	    
+		<!-- 登陆页面和忘记密码页面不过滤 -->
+		<intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/forgotpassword.jsp"/>
+		
+		<form-login login-page="/login.jsp"
+			authentication-failure-url="/login.jsp?error=true"
+			default-target-url="/index.jsp" always-use-default-target='true' />
+		
+		<!-- "记住我"功能，采用持久化策略（将用户的登录信息存放在数据库表中） -->
+		<remember-me data-source-ref="dataSource" />
+		
+		<!-- 实现免登陆验证 -->
+		<!-- 只能登陆一次 -->
+		<session-management
+			session-authentication-error-url="/402.jsp" invalid-session-url="/sessionTimeout.jsp">
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+		
+		<logout/>
+
+		<!-- 增加一个自定义的filter，放在FILTER_SECURITY_INTERCEPTOR之前，
+		实现用户、角色、权限、资源的数据库管理。 11/3/23 -->
+		<custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR"/> 
+	</http>
+
+	<!-- 将用户信息硬编码在xml文件中 -->
+	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
+		name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER" /> <user 
+		name="user" password="user" authorities="ROLE_USER" /> </user-service> </authentication-provider> 
+		</authentication-manager> -->
+
+	<!-- 数据中查找用户 
+	<authentication-manager alias="myAuthenticationManager">
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select username,password,status as enabled
+                               from user
+                              where username=?"
+				authorities-by-username-query="select u.username,r.name as authority
+                                             from user u
+                                     join user_role ur
+                                    on u.id=ur.user_id
+                                      join role r
+                                    on r.id=ur.role_id
+                                     where u.username=?" />
+		</authentication-provider>
+	</authentication-manager>
+	-->
+
+
+	<!-- 实现了UserDetailsService的Bean -->
+	<!-- 注意能够为authentication-manager 设置alias别名 -->
+	<authentication-manager alias="myAuthenticationManager">
+		<authentication-provider user-service-ref="myUserDetailService">
+		   
+			<password-encoder ref="passwordEncoder">
+				<salt-source user-property="username" />
+			</password-encoder>
+			 
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- 一个自定义的filter，必须包含authenticationManager, accessDecisionManager,securityMetadataSource三个属性。 -->
+	<b:bean id="myFilter"
+		class="com.spring.security.filter.MyFilterSecurityInterceptor">
+		<!-- 用户拥有的权限 -->
+		<b:property name="authenticationManager" ref="myAuthenticationManager"></b:property>
+		<!-- 用户是否拥有所请求资源的权限 -->
+		<b:property name="accessDecisionManager" ref="myAccessDecisionManager"></b:property>
+		<!-- 资源与权限对应关系 -->
+		<b:property name="securityMetadataSource" ref="mySecurityMetadataSource"></b:property>
+	</b:bean>
+
+
+</b:beans>
