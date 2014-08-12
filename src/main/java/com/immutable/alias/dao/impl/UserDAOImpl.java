@@ -1,7 +1,7 @@
-package com.xt.dao.impl;
+package com.immutable.alias.dao.impl;
 
-import com.xt.dao.UserDAO;
-import com.xt.model.User;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
 
 public class UserDAOImpl implements UserDAO{
 

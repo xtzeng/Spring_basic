@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">
+  <bean id="u" class="com.immutable.alias.dao.impl.UserDAOImpl">
   </bean>
 	
-  <bean id="userService" class="com.xt.service.UserService">
+  <bean id="userService" class="com.immutable.alias.service.UserService">
   	<!--  <property name="userDAO" ref="u" />-->
   	
   	<!-- 用构造方法注入到属性 userDao-->

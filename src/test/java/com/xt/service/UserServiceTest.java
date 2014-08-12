@@ -9,7 +9,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.xt.model.User;
+import com.immutable.alias.model.User;
+import com.immutable.alias.service.UserService;
 
 
 public class UserServiceTest {
