@@ -1,6 +1,6 @@
-package com.xt.dao;
+package com.immutable.alias.dao;
 
-import com.xt.model.User;
+import com.immutable.alias.model.User;
 
 public interface UserDAO {
 

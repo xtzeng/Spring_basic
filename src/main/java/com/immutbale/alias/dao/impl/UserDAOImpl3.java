@@ -1,8 +1,8 @@
-package com.xt.dao.impl;
+package com.immutbale.alias.dao.impl;
 
-import com.xt.aop.LogInterceptor;
-import com.xt.dao.UserDAO;
-import com.xt.model.User;
+import com.immutable.alias.aop.LogInterceptor;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
 
 
 

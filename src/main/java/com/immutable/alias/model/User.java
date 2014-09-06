@@ -1,10 +1,11 @@
-package com.xt.model;
+package com.immutable.alias.model;
 
 public class User {
 
 	
 	private String username;
 	private String password;
+	
 	public String getUsername() {
 		return username;
 	}

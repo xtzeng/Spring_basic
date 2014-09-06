@@ -1,9 +1,9 @@
-package com.xt.dao.impl;
+package com.immutbale.alias.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.xt.dao.UserDAO;
-import com.xt.model.User;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
 
 @Repository("u")
 public class UserDAOImpl implements UserDAO{

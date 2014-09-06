@@ -14,7 +14,7 @@
 	-->
 	 
    <!--  <context:annotation-config />    -->
-   <context:component-scan base-package="com.xt.*" ></context:component-scan> 
+   <context:component-scan base-package="com.immutable.alias.*" ></context:component-scan> 
    
    <!--
  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">

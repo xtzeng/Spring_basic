@@ -1,15 +1,20 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Proxy;
 
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.xt.model.User;
+import com.immutable.alias.aop.LogInterceptor;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
+import com.immutable.alias.service.UserService;
+import com.immutbale.alias.dao.impl.UserDAOImpl;
 
 
 public class UserServiceTest {
@@ -24,6 +29,18 @@ public class UserServiceTest {
 //		u.setPassword("zhangsan");
 		userService.add(new User());
 		ctx.destroy();
+		
+	}
+	
+	@Test
+	public void testProxy() {
+		UserDAO userDAO = new UserDAOImpl();
+		LogInterceptor li = new LogInterceptor();
+		li.setTarget(userDAO);
+		UserDAO userDAOProxy = (UserDAO)Proxy.newProxyInstance(userDAO.getClass().getClassLoader(), userDAO.getClass().getInterfaces(), li);
+		System.out.println(userDAOProxy.getClass());
+		userDAOProxy.delete();
+		userDAOProxy.save(new User());
 		
 	}
 

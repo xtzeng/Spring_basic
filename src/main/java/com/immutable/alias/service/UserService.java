@@ -1,4 +1,4 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 
 
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import org.springframework.stereotype.Service;
 
-import com.xt.dao.UserDAO;
-import com.xt.model.User;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.User;
 
 @Service("userService")
 public class UserService {
@@ -24,7 +24,7 @@ public class UserService {
 	
 	@PostConstruct
 	public void init() {
-		System.out.println("init.........");
+		System.out.println("Pre-init.........");
 	}
 	
 	public void add(User u) {
@@ -33,6 +33,6 @@ public class UserService {
 
 	@PreDestroy
 	public void destroy() {
-		System.out.println("destroy.........");
+		System.out.println("Pre-destroy.........");
 	}
 }

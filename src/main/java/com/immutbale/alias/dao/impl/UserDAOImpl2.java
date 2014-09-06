@@ -1,6 +1,6 @@
-package com.xt.dao.impl;
+package com.immutbale.alias.dao.impl;
 
-import com.xt.model.User;
+import com.immutable.alias.model.User;
 
 
 
@@ -11,6 +11,7 @@ public class UserDAOImpl2 extends UserDAOImpl {
 		
 		System.out.println("save start...");
 		super.save(user);
+		System.out.println("save end...");
 		
 	}
 	
