@@ -1,4 +1,4 @@
-package com.xt.dao.impl;
+package com.immutable.alias.dao.impl;
 
 import javax.annotation.Resource;
 
@@ -6,8 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.xt.dao.LogDAO;
-import com.xt.model.Log;
+import com.immutable.alias.dao.LogDAO;
+import com.immutable.alias.model.Log;
 
 @Repository("logDAO")
 public class LogDAOImpl implements LogDAO{
@@ -20,7 +20,7 @@ public class LogDAOImpl implements LogDAO{
 		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(log);
-		throw new RuntimeException("error!");
+		//throw new RuntimeException("error!");
 	}
 
 }

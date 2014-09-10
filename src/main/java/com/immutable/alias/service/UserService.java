@@ -1,7 +1,10 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 
 
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -14,10 +17,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.xt.dao.LogDAO;
-import com.xt.dao.UserDAO;
-import com.xt.model.Log;
-import com.xt.model.User;
+import com.immutable.alias.dao.LogDAO;
+import com.immutable.alias.dao.UserDAO;
+import com.immutable.alias.model.Log;
+import com.immutable.alias.model.User;
 
 @Service("userService")
 public class UserService {
@@ -41,6 +44,7 @@ public class UserService {
 		userDAO.save(u);
 		Log log = new Log();
 		log.setMsg("a user saved!");
+		log.setLogTime(new Timestamp(new Date().getTime()));
 		logDAO.save(log);
 	}
 

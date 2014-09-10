@@ -20,7 +20,7 @@
 	-->
 	 
    <!--  --> <context:annotation-config />   
-   <context:component-scan base-package="com.xt.*" ></context:component-scan> 
+   <context:component-scan base-package="com.immutable.alias.*" ></context:component-scan> 
    
    <!--
  <bean id="u" class="com.xt.dao.impl.UserDAOImpl">
@@ -60,7 +60,7 @@
 			</list>
 		</property>-->
 		
-		<property name="packagesToScan" value="com.xt.model"/> 
+		<property name="packagesToScan" value="com.immutable.alias.model"/> 
 		
 		<property name="hibernateProperties">
 			<props>

@@ -1,4 +1,4 @@
-package com.xt.service;
+package com.immutable.alias.service;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,8 @@ import java.util.Date;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.xt.model.User;
+import com.immutable.alias.model.User;
+import com.immutable.alias.service.UserService;
 
 
 public class UserServiceTest {
